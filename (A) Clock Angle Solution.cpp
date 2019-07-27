@@ -1,3 +1,5 @@
+//This file contains two solution
+//-----1st solution------
 #include <iostream>
 #include <cstdlib>
 #include <iomanip>
@@ -46,3 +48,56 @@ int main() {
 
 	return 0;
 }
+
+//---------2nd solution------
+/*
+#include <iostream>
+#include <math.h>
+#include <iomanip>
+
+float _round(float number) {
+
+	float value = (int)(number * 100 + 0.5);
+	return (float)value / 100;
+}
+
+int main() {
+	float period, longitude;
+
+	std::cin >> period;
+	std::cin >> longitude;
+
+	//To get the actual time
+	float time = _round((period / 360) * longitude);
+	
+	int n = round(time);
+	//To get minute in form of 0-100 (instead of 0-60)
+	int minute = abs(time - n) * 100;
+	//This will get the hours
+	int hours = time - (float)(minute / 100);
+
+	//To get angle minute hand will form
+	float minute_angle = 3.6 * minute;
+	//To get angle hour hand will form
+	float hour_angle = (30 * hours) + ((double) 30 * minute / 100);
+	
+	//if hour hand form angle more than 360 then round it
+	//For example hour is 15 (450 degree)then we will 
+	//change it to 3 (90 degree)
+	if (hour_angle <= 360)
+		hour_angle -= 360;
+
+	//To get minimum angle in positive
+	float minimum_angle = abs(hour_angle - minute_angle);
+
+	//Since we wnat minimum angle formed by minute and hour
+	//hand so max angle would be 180 on clock if minimum_angle
+	//more than 180, then we will subtract minimum_angle by 360 degree
+	if (minimum_angle > 180)
+		minimum_angle = 360 - minimum_angle;
+	std::cout << std::setprecision(2);
+	std::cout << minimum_angle;
+
+	return 0;
+}
+*/
